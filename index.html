@@ -8,6 +8,7 @@
     name="description"
     content="DomoSmart plant, installiert und automatisiert moderne Smart-Home-Lösungen mit Home Assistant – individuell, lokal und zuverlässig."
   />
+
   <style>
     :root {
       --bg: #081225;
@@ -24,13 +25,7 @@
       --max: 1180px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -40,12 +35,6 @@
         radial-gradient(circle at top left, rgba(59, 130, 246, 0.14), transparent 28%),
         linear-gradient(180deg, #07111f 0%, #081225 100%);
       color: var(--text);
-      line-height: 1.55;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
     }
 
     .container {
@@ -56,7 +45,6 @@
     .topbar {
       position: sticky;
       top: 0;
-      z-index: 20;
       backdrop-filter: blur(14px);
       background: rgba(8, 18, 37, 0.72);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -67,7 +55,6 @@
       align-items: center;
       justify-content: space-between;
       min-height: 78px;
-      gap: 20px;
     }
 
     .brand {
@@ -75,600 +62,76 @@
       align-items: center;
       gap: 14px;
       font-weight: 700;
-      letter-spacing: -0.02em;
     }
 
-    .brand-mark {
-      width: 42px;
+    .brand img {
       height: 42px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, #1d4ed8, #22c55e);
-      display: grid;
-      place-items: center;
-      box-shadow: 0 10px 25px rgba(34, 197, 94, 0.22);
-      font-size: 14px;
-      font-weight: 800;
-    }
-
-    .brand-text {
-      font-size: 1.1rem;
     }
 
     .menu {
       display: flex;
       gap: 26px;
-      align-items: center;
       color: var(--muted);
-      font-size: 0.96rem;
-    }
-
-    .menu a:hover {
-      color: var(--white);
     }
 
     .nav-cta {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
       padding: 12px 18px;
       border-radius: 14px;
       background: var(--accent);
       color: #07111f;
       font-weight: 700;
-      transition: 0.2s ease;
-    }
-
-    .nav-cta:hover,
-    .button-primary:hover {
-      background: var(--accent-dark);
-      transform: translateY(-1px);
     }
 
     .hero {
-      padding: 86px 0 70px;
+      padding: 80px 0;
+      text-align: center;
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 34px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: #d3deeb;
-      font-size: 0.92rem;
-      padding: 10px 14px;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 999px;
-      background: rgba(255,255,255,0.04);
+    .hero-logo {
+      height: 90px;
       margin-bottom: 20px;
     }
 
     h1 {
+      font-size: 3rem;
       margin: 0;
-      font-size: clamp(2.5rem, 5vw, 4.9rem);
-      line-height: 0.98;
-      letter-spacing: -0.045em;
     }
 
-    .hero p {
-      max-width: 700px;
-      font-size: 1.15rem;
+    p {
       color: var(--muted);
-      margin: 24px 0 0;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 30px;
-    }
-
-    .button-primary,
-    .button-secondary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 52px;
-      padding: 0 22px;
-      border-radius: 16px;
-      font-weight: 700;
-      transition: 0.2s ease;
-    }
-
-    .button-primary {
-      background: var(--accent);
-      color: #06111f;
-      box-shadow: 0 10px 30px rgba(34, 197, 94, 0.24);
-    }
-
-    .button-secondary {
-      border: 1px solid rgba(255,255,255,0.12);
-      color: var(--text);
-      background: rgba(255,255,255,0.03);
-    }
-
-    .button-secondary:hover {
-      background: rgba(255,255,255,0.08);
-    }
-
-    .hero-points {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 28px;
-    }
-
-    .hero-point {
-      padding: 14px 16px;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: #dbe7f5;
-      font-size: 0.95rem;
-    }
-
-    .hero-card {
-      padding: 26px;
-      border-radius: 28px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
-      border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: var(--shadow);
-    }
-
-    .dashboard {
-      border-radius: 22px;
-      padding: 22px;
-      background: linear-gradient(180deg, #0b1730 0%, #0f1d3b 100%);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .dashboard-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 18px;
-    }
-
-    .dashboard-top small {
-      color: var(--muted);
-      display: block;
-      margin-bottom: 6px;
-    }
-
-    .dashboard-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-    }
-
-    .live {
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(34,197,94,0.15);
-      color: #a7f3d0;
-      font-size: 0.85rem;
-      font-weight: 700;
-    }
-
-    .metric-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .metric {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 18px;
-      padding: 16px;
-    }
-
-    .metric-label {
-      color: var(--muted);
-      font-size: 0.9rem;
-      margin-bottom: 8px;
-    }
-
-    .metric-value {
-      font-size: 1.25rem;
-      font-weight: 700;
-    }
-
-    .dashboard-note {
-      margin-top: 14px;
-      padding: 16px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.04);
-      color: #d9e4f1;
-      border: 1px solid rgba(255,255,255,0.08);
-      font-size: 0.95rem;
-    }
-
-    section {
-      padding: 78px 0;
-    }
-
-    .section-head {
-      max-width: 760px;
-      margin-bottom: 28px;
-    }
-
-    .section-kicker {
-      color: #9ed0ff;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-size: 0.78rem;
-      font-weight: 700;
-      margin-bottom: 14px;
-    }
-
-    h2 {
-      margin: 0 0 14px;
-      font-size: clamp(2rem, 3vw, 3rem);
-      letter-spacing: -0.03em;
-    }
-
-    .section-head p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 1.05rem;
-    }
-
-    .services {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      padding: 24px;
-      box-shadow: var(--shadow);
-    }
-
-    .card h3 {
-      margin: 0 0 12px;
-      font-size: 1.18rem;
-    }
-
-    .card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.98rem;
-    }
-
-    .benefits-wrap {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-      align-items: start;
-    }
-
-    .benefit-list {
-      display: grid;
-      gap: 14px;
-    }
-
-    .benefit {
-      padding: 18px 20px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: #dbe7f5;
-      font-weight: 600;
-    }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .step-number {
-      font-size: 0.85rem;
-      color: #9ed0ff;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      margin-bottom: 10px;
-    }
-
-    .contact-box {
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 24px;
-      padding: 30px;
-      border-radius: 28px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-      border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: var(--shadow);
-    }
-
-    .contact-panel {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 22px;
-      padding: 22px;
-    }
-
-    .contact-panel div + div {
-      margin-top: 18px;
-    }
-
-    .contact-label {
-      color: var(--muted);
-      font-size: 0.88rem;
-      margin-bottom: 6px;
-    }
-
-    .contact-value {
-      font-size: 1.05rem;
-      font-weight: 600;
-    }
-
-    footer {
-      padding: 26px 0 34px;
-      color: var(--muted);
-      border-top: 1px solid rgba(255,255,255,0.08);
-      margin-top: 24px;
-    }
-
-    .footer-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 1024px) {
-      .hero-grid,
-      .benefits-wrap,
-      .contact-box,
-      .services,
-      .steps {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .menu {
-        display: none;
-      }
-    }
-
-    @media (max-width: 720px) {
-      .hero-grid,
-      .benefits-wrap,
-      .contact-box,
-      .services,
-      .steps,
-      .hero-points,
-      .metric-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        padding-top: 60px;
-      }
-
-      .nav {
-        min-height: 70px;
-      }
-
-      h1 {
-        line-height: 1.02;
-      }
     }
   </style>
 </head>
+
 <body>
-  <header class="topbar">
-    <div class="container nav">
-      <a class="brand" href="#">
-        <span class="brand-mark">DS</span>
-        <span class="brand-text">DomoSmart</span>
-      </a>
 
-      <nav class="menu">
-        <a href="#leistungen">Leistungen</a>
-        <a href="#vorteile">Vorteile</a>
-        <a href="#ablauf">Ablauf</a>
-        <a href="#kontakt">Kontakt</a>
-      </nav>
+<header class="topbar">
+  <div class="container nav">
 
-      <a class="nav-cta" href="#kontakt">Beratung anfragen</a>
-    </div>
-  </header>
+    <!-- 🔥 LOGO OBEN -->
+    <a class="brand" href="#">
+      <img src="logo.png" alt="DomoSmart Logo">
+      <span>DomoSmart</span>
+    </a>
 
-  <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow">Smart Home · Home Assistant · Automatisierung</div>
-          <h1>Technik, die Ihr Gebäude wirklich smarter macht.</h1>
-          <p>
-            DomoSmart plant, integriert und optimiert moderne Smart-Home-Lösungen
-            mit Fokus auf Zuverlässigkeit, lokale Kontrolle und echte Alltagstauglichkeit.
-          </p>
+    <nav class="menu">
+      <a href="#leistungen">Leistungen</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
 
-          <div class="hero-actions">
-            <a class="button-primary" href="#kontakt">Jetzt beraten lassen</a>
-            <a class="button-secondary" href="#leistungen">Leistungen ansehen</a>
-          </div>
+    <a class="nav-cta" href="#kontakt">Beratung</a>
+  </div>
+</header>
 
-          <div class="hero-points">
-            <div class="hero-point">Individuelle Lösungen statt Standardpakete</div>
-            <div class="hero-point">Lokale Steuerung statt Cloud-Zwang</div>
-            <div class="hero-point">Saubere Dashboards für Handy, Tablet und Wandpanel</div>
-            <div class="hero-point">Ideal für Haus, Bestand und kleine Unternehmen</div>
-          </div>
-        </div>
+<section class="hero">
 
-        <div class="hero-card">
-          <div class="dashboard">
-            <div class="dashboard-top">
-              <div>
-                <small>DomoSmart</small>
-                <div class="dashboard-title">Smart Home Dashboard</div>
-              </div>
-              <div class="live">System online</div>
-            </div>
+  <!-- 🔥 GROSSES LOGO -->
+  <img src="logo.png" alt="DomoSmart Logo" class="hero-logo">
 
-            <div class="metric-grid">
-              <div class="metric">
-                <div class="metric-label">Beleuchtung</div>
-                <div class="metric-value">12 Szenen</div>
-              </div>
-              <div class="metric">
-                <div class="metric-label">Energie</div>
-                <div class="metric-value">Live-Überblick</div>
-              </div>
-              <div class="metric">
-                <div class="metric-label">Sicherheit</div>
-                <div class="metric-value">Kameras & Sensoren</div>
-              </div>
-              <div class="metric">
-                <div class="metric-label">Steuerung</div>
-                <div class="metric-value">Mobil & lokal</div>
-              </div>
-            </div>
+  <h1>DomoSmart</h1>
+  <p>Smart Home. Einfach. Intelligent.</p>
 
-            <div class="dashboard-note">
-              Maßgeschneiderte Automationen, übersichtliche Visualisierung und eine
-              stabile technische Basis für ein System, das langfristig funktioniert.
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+</section>
 
-    <section id="leistungen">
-      <div class="container">
-        <div class="section-head">
-          <div class="section-kicker">Leistungen</div>
-          <h2>Professionelle Smart-Home-Lösungen aus einer Hand</h2>
-          <p>
-            Von der ersten Idee bis zur fertigen Umsetzung verbindet DomoSmart
-            moderne Technik mit klaren Prozessen und sauberer Integration.
-          </p>
-        </div>
-
-        <div class="services">
-          <div class="card">
-            <h3>Smart Home Planung</h3>
-            <p>Individuelle Konzepte für Beleuchtung, Sicherheit, Energie, Beschattung und Komfort.</p>
-          </div>
-          <div class="card">
-            <h3>Home Assistant Integration</h3>
-            <p>Saubere Einrichtung von Home Assistant mit Dashboards, Automationen und Fernzugriff.</p>
-          </div>
-          <div class="card">
-            <h3>Nachrüstung & Optimierung</h3>
-            <p>Bestehende Technik intelligent zusammenführen – von Sensorik bis Kamerasystem.</p>
-          </div>
-          <div class="card">
-            <h3>Service & Betreuung</h3>
-            <p>Persönliche Unterstützung von der ersten Idee bis zum stabilen laufenden Betrieb.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="vorteile">
-      <div class="container benefits-wrap">
-        <div class="section-head">
-          <div class="section-kicker">Warum DomoSmart</div>
-          <h2>Klar geplant. Sauber integriert. Einfach bedienbar.</h2>
-          <p>
-            Gute Gebäudetechnik muss im Alltag funktionieren. Deshalb liegt der Fokus
-            auf robusten Komponenten, verständlicher Bedienung und einer Lösung,
-            die auch später noch sinnvoll erweiterbar bleibt.
-          </p>
-        </div>
-
-        <div class="benefit-list">
-          <div class="benefit">Datenschutzfreundliche Architektur</div>
-          <div class="benefit">Lokale Steuerung statt unnötiger Cloud-Abhängigkeit</div>
-          <div class="benefit">Saubere Einbindung vorhandener Geräte und Systeme</div>
-          <div class="benefit">Individuelle Dashboards für jede Nutzungssituation</div>
-          <div class="benefit">Erweiterbar für Energie, Alarm, Kamera und Klima</div>
-        </div>
-      </div>
-    </section>
-
-    <section id="ablauf">
-      <div class="container">
-        <div class="section-head">
-          <div class="section-kicker">Ablauf</div>
-          <h2>So läuft ein Projekt mit DomoSmart ab</h2>
-          <p>Strukturiert, verständlich und mit klarem Fokus auf ein zuverlässiges Ergebnis.</p>
-        </div>
-
-        <div class="steps">
-          <div class="card">
-            <div class="step-number">01</div>
-            <h3>Analyse</h3>
-            <p>Bedarf, Gebäude, vorhandene Technik und Wünsche werden strukturiert aufgenommen.</p>
-          </div>
-          <div class="card">
-            <div class="step-number">02</div>
-            <h3>Konzept</h3>
-            <p>Passende Komponenten, Integrationen und Automationen werden sinnvoll geplant.</p>
-          </div>
-          <div class="card">
-            <div class="step-number">03</div>
-            <h3>Umsetzung</h3>
-            <p>Einrichtung, Dashboard-Erstellung und systematische Inbetriebnahme vor Ort oder remote.</p>
-          </div>
-          <div class="card">
-            <div class="step-number">04</div>
-            <h3>Betreuung</h3>
-            <p>Optimierung, Erweiterung und Support für einen dauerhaft stabilen Betrieb.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="kontakt">
-      <div class="container">
-        <div class="contact-box">
-          <div>
-            <div class="section-kicker">Kontakt</div>
-            <h2>Bereit für ein professionelles Smart-Home-Konzept?</h2>
-            <p style="color: var(--muted); font-size: 1.05rem; margin: 0;">
-              Nutzen Sie diese Website als starken ersten Eindruck für Ihre neue Firma.
-              Ansprechpartner, Telefonnummer und Einsatzgebiet können wir als Nächstes direkt ergänzen.
-            </p>
-          </div>
-
-          <div class="contact-panel">
-            <div>
-              <div class="contact-label">E-Mail</div>
-              <div class="contact-value">info@domosmart.de</div>
-            </div>
-            <div>
-              <div class="contact-label">Leistung</div>
-              <div class="contact-value">Planung, Integration und Automatisierung</div>
-            </div>
-            <div>
-              <div class="contact-label">Schwerpunkt</div>
-              <div class="contact-value">Home Assistant, lokale Steuerung, saubere Dashboards</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-row">
-      <div>© 2026 DomoSmart</div>
-      <div>Impressum · Datenschutz</div>
-    </div>
-  </footer>
 </body>
 </html>

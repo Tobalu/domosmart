@@ -21,18 +21,21 @@
       --bg-card: rgba(255, 255, 255, 0.06);
       --bg-card-strong: rgba(255, 255, 255, 0.08);
       --border: rgba(255, 255, 255, 0.10);
+      --border-soft: rgba(255, 255, 255, 0.06);
       --text: #f4f7fb;
       --muted: #b8c4d6;
+      --muted-strong: #d6e0ef;
       --accent: #22c55e;
       --accent-dark: #16a34a;
-      --accent-soft: rgba(34, 197, 94, 0.14);
+      --accent-soft: rgba(34, 197, 94, 0.16);
+      --accent-glow: rgba(34, 197, 94, 0.22);
       --blue-soft: rgba(59, 130, 246, 0.16);
+      --blue-glow: rgba(59, 130, 246, 0.18);
       --shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
       --shadow-soft: 0 12px 30px rgba(0, 0, 0, 0.18);
       --radius: 24px;
+      --radius-lg: 30px;
       --max: 1180px;
-      --header-h: 68px;
-      --header-h-scrolled: 50px;
     }
 
     * {
@@ -54,6 +57,7 @@
         linear-gradient(180deg, #07111f 0%, #081225 100%);
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
+      overflow-x: hidden;
     }
 
     img {
@@ -66,7 +70,9 @@
       text-decoration: none;
     }
 
-    button {
+    button,
+    input,
+    textarea {
       font: inherit;
     }
 
@@ -75,7 +81,7 @@
       margin: 0 auto;
     }
 
-    /* ===== TESLA / APPLE STYLE TOPBAR ===== */
+    /* ===== ULTRA SLIM TOPBAR ===== */
 
     .topbar {
       position: sticky;
@@ -86,31 +92,31 @@
         border-color 0.28s ease,
         box-shadow 0.28s ease,
         backdrop-filter 0.28s ease;
-      background: rgba(8, 18, 37, 0.38);
-      backdrop-filter: blur(16px) saturate(140%);
-      -webkit-backdrop-filter: blur(16px) saturate(140%);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      background: rgba(8, 18, 37, 0.30);
+      backdrop-filter: blur(14px) saturate(140%);
+      -webkit-backdrop-filter: blur(14px) saturate(140%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
     }
 
     .topbar.scrolled {
-      background: rgba(8, 18, 37, 0.72);
-      backdrop-filter: blur(24px) saturate(160%);
-      -webkit-backdrop-filter: blur(24px) saturate(160%);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18);
+      background: rgba(8, 18, 37, 0.62);
+      backdrop-filter: blur(22px) saturate(160%);
+      -webkit-backdrop-filter: blur(22px) saturate(160%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.14);
     }
 
     .nav {
       display: grid;
       grid-template-columns: auto 1fr auto;
       align-items: center;
-      gap: 18px;
-      min-height: var(--header-h);
+      gap: 8px;
+      min-height: 40px;
       transition: min-height 0.28s ease;
     }
 
     .topbar.scrolled .nav {
-      min-height: var(--header-h-scrolled);
+      min-height: 30px;
     }
 
     .brand {
@@ -122,18 +128,15 @@
 
     .brand-logo {
       display: block;
-      width: clamp(118px, 13vw, 170px);
+      width: clamp(74px, 8vw, 104px);
       height: auto;
       object-fit: contain;
-      transition:
-        width 0.28s ease,
-        opacity 0.28s ease,
-        transform 0.28s ease;
       transform-origin: left center;
+      transition: width 0.28s ease;
     }
 
     .topbar.scrolled .brand-logo {
-      width: clamp(98px, 11vw, 138px);
+      width: clamp(60px, 7vw, 86px);
     }
 
     .menu-wrap {
@@ -145,101 +148,44 @@
 
     .menu {
       display: inline-flex;
-      gap: 10px;
+      gap: 2px;
       align-items: center;
       color: var(--muted);
-      font-size: 0.93rem;
-      padding: 4px;
+      font-size: 0.72rem;
+      padding: 2px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.025);
-      border: 1px solid rgba(255, 255, 255, 0.04);
-      transition:
-        background 0.28s ease,
-        border-color 0.28s ease,
-        opacity 0.28s ease,
-        transform 0.28s ease;
-    }
-
-    .topbar.scrolled .menu {
-      background: rgba(255, 255, 255, 0.035);
-      border-color: rgba(255, 255, 255, 0.055);
+      background: rgba(255, 255, 255, 0.015);
+      border: 1px solid rgba(255, 255, 255, 0.025);
+      transition: background 0.28s ease, border-color 0.28s ease;
     }
 
     .menu a {
-      padding: 8px 14px;
+      padding: 4px 8px;
       border-radius: 999px;
-      transition:
-        color 0.2s ease,
-        background 0.2s ease,
-        opacity 0.2s ease;
+      transition: color 0.2s ease, background 0.2s ease;
       white-space: nowrap;
     }
 
     .menu a:hover {
       color: var(--text);
-      background: rgba(255,255,255,0.055);
-    }
-
-    .menu a:active {
-      background: rgba(255,255,255,0.075);
+      background: rgba(255,255,255,0.045);
     }
 
     .nav-right {
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      gap: 10px;
-    }
-
-    .nav-cta {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 40px;
-      padding: 0 16px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: var(--text);
-      font-weight: 600;
-      font-size: 0.92rem;
-      letter-spacing: -0.01em;
-      transition:
-        transform 0.2s ease,
-        background 0.2s ease,
-        border-color 0.2s ease,
-        color 0.2s ease;
-      white-space: nowrap;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .nav-cta:hover {
-      background: rgba(255, 255, 255, 0.11);
-      border-color: rgba(255, 255, 255, 0.12);
-      transform: translateY(-1px);
-    }
-
-    .nav-cta-primary {
-      background: var(--accent);
-      color: #07111f;
-      border-color: transparent;
-      box-shadow: 0 10px 30px rgba(34, 197, 94, 0.20);
-    }
-
-    .nav-cta-primary:hover {
-      background: var(--accent-dark);
-      color: #07111f;
-      border-color: transparent;
+      gap: 4px;
     }
 
     .menu-toggle {
       display: none;
       appearance: none;
       border: 0;
-      background: rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.045);
       color: var(--text);
-      width: 40px;
-      height: 40px;
+      width: 26px;
+      height: 26px;
       border-radius: 999px;
       cursor: pointer;
       align-items: center;
@@ -249,13 +195,13 @@
     }
 
     .menu-toggle:hover {
-      background: rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.085);
       transform: translateY(-1px);
     }
 
     .menu-toggle svg {
-      width: 18px;
-      height: 18px;
+      width: 13px;
+      height: 13px;
     }
 
     .mobile-panel {
@@ -263,18 +209,15 @@
       overflow: hidden;
       max-height: 0;
       opacity: 0;
-      transition:
-        max-height 0.28s ease,
-        opacity 0.22s ease,
-        padding 0.28s ease;
+      transition: max-height 0.28s ease, opacity 0.22s ease, padding 0.28s ease;
       padding: 0;
     }
 
     .mobile-panel.open {
       display: block;
-      max-height: 340px;
+      max-height: 260px;
       opacity: 1;
-      padding: 0 0 14px;
+      padding: 0 0 10px;
     }
 
     .mobile-menu {
@@ -285,18 +228,12 @@
 
     .mobile-menu a {
       display: block;
-      padding: 12px 14px;
+      padding: 10px 12px;
       border-radius: 14px;
       background: rgba(255,255,255,0.04);
       border: 1px solid rgba(255,255,255,0.06);
       color: var(--text);
-    }
-
-    .mobile-menu .mobile-cta {
-      background: var(--accent);
-      color: #07111f;
-      font-weight: 700;
-      border-color: transparent;
+      font-size: 0.95rem;
     }
 
     /* ===== HERO ===== */
@@ -304,39 +241,48 @@
     .hero {
       position: relative;
       overflow: hidden;
-      padding: 96px 0 76px;
+      padding: 102px 0 86px;
     }
 
     .hero::before {
       content: "";
       position: absolute;
-      inset: auto auto 12% -6%;
-      width: 280px;
-      height: 280px;
-      background: var(--blue-soft);
-      filter: blur(80px);
+      left: -80px;
+      top: 120px;
+      width: 340px;
+      height: 340px;
+      background: var(--blue-glow);
+      filter: blur(95px);
       border-radius: 50%;
       pointer-events: none;
+      animation: floatGlow 10s ease-in-out infinite;
     }
 
     .hero::after {
       content: "";
       position: absolute;
-      inset: 5% -4% auto auto;
-      width: 260px;
-      height: 260px;
-      background: var(--accent-soft);
-      filter: blur(90px);
+      right: -60px;
+      top: 20px;
+      width: 340px;
+      height: 340px;
+      background: var(--accent-glow);
+      filter: blur(110px);
       border-radius: 50%;
       pointer-events: none;
+      animation: floatGlow 12s ease-in-out infinite reverse;
+    }
+
+    @keyframes floatGlow {
+      0%, 100% { transform: translateY(0px) translateX(0px); }
+      50% { transform: translateY(-18px) translateX(8px); }
     }
 
     .hero-grid {
       position: relative;
       z-index: 1;
       display: grid;
-      grid-template-columns: 1.08fr 0.92fr;
-      gap: 34px;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 36px;
       align-items: center;
     }
 
@@ -356,22 +302,30 @@
 
     .hero-brand {
       margin-bottom: 22px;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.9s ease forwards;
+      animation-delay: 0.05s;
     }
 
     .hero-brand img {
       display: block;
-      width: clamp(240px, 28vw, 360px);
+      width: clamp(250px, 28vw, 380px);
       height: auto;
       object-fit: contain;
-      filter: drop-shadow(0 12px 30px rgba(0,0,0,0.14));
+      filter: drop-shadow(0 16px 36px rgba(0,0,0,0.18));
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(2.7rem, 5vw, 5.1rem);
-      line-height: 0.98;
-      letter-spacing: -0.055em;
+      font-size: clamp(2.8rem, 5vw, 5.35rem);
+      line-height: 0.97;
+      letter-spacing: -0.06em;
       max-width: 760px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.95s ease forwards;
+      animation-delay: 0.12s;
     }
 
     .hero p {
@@ -379,6 +333,17 @@
       font-size: 1.14rem;
       color: var(--muted);
       margin: 24px 0 0;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fadeUp 0.95s ease forwards;
+      animation-delay: 0.22s;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .hero-actions {
@@ -386,6 +351,10 @@
       flex-wrap: wrap;
       gap: 14px;
       margin-top: 30px;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fadeUp 0.95s ease forwards;
+      animation-delay: 0.30s;
     }
 
     .button-primary,
@@ -393,13 +362,11 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 52px;
+      min-height: 54px;
       padding: 0 22px;
       border-radius: 16px;
       font-weight: 700;
-      transition:
-        0.2s ease,
-        transform 0.2s ease;
+      transition: 0.2s ease, transform 0.2s ease;
       box-shadow: var(--shadow-soft);
     }
 
@@ -430,6 +397,10 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 12px;
       margin-top: 28px;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fadeUp 0.95s ease forwards;
+      animation-delay: 0.40s;
     }
 
     .hero-point {
@@ -444,16 +415,51 @@
 
     .hero-card {
       padding: 26px;
-      border-radius: 30px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+      border-radius: 32px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.085), rgba(255,255,255,0.04));
       border: 1px solid rgba(255,255,255,0.10);
       box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(24px) scale(0.985);
+      animation: heroCardIn 1s ease forwards;
+      animation-delay: 0.28s;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -40% auto auto -20%;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(59,130,246,0.16), transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -10% -25% auto;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(34,197,94,0.14), transparent 65%);
+      pointer-events: none;
+    }
+
+    @keyframes heroCardIn {
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
     }
 
     .dashboard {
-      border-radius: 24px;
+      position: relative;
+      z-index: 1;
+      border-radius: 26px;
       padding: 22px;
-      background: linear-gradient(180deg, #0b1730 0%, #0f1d3b 100%);
+      background: linear-gradient(180deg, #0a162d 0%, #0f1d3b 100%);
       border: 1px solid rgba(255,255,255,0.08);
     }
 
@@ -472,8 +478,9 @@
     }
 
     .dashboard-title {
-      font-size: 1.3rem;
+      font-size: 1.35rem;
       font-weight: 700;
+      letter-spacing: -0.02em;
     }
 
     .live {
@@ -497,31 +504,62 @@
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 18px;
       padding: 16px;
+      min-height: 108px;
     }
 
     .metric-label {
       color: var(--muted);
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       margin-bottom: 8px;
     }
 
     .metric-value {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       font-weight: 700;
+      margin-bottom: 8px;
     }
 
-    .dashboard-note {
+    .metric-sub {
+      color: var(--muted-strong);
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .dashboard-strip {
       margin-top: 14px;
-      padding: 16px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      align-items: center;
+      padding: 14px 16px;
       border-radius: 18px;
       background: rgba(255,255,255,0.04);
-      color: #d9e4f1;
       border: 1px solid rgba(255,255,255,0.08);
-      font-size: 0.95rem;
+    }
+
+    .dashboard-strip-title {
+      font-weight: 700;
+      font-size: 0.96rem;
+      margin-bottom: 4px;
+    }
+
+    .dashboard-strip-text {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .dashboard-status {
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(34,197,94,0.12);
+      color: #b7f7d3;
+      font-size: 0.86rem;
+      font-weight: 700;
+      white-space: nowrap;
     }
 
     section {
-      padding: 82px 0;
+      padding: 84px 0;
     }
 
     .section-head {
@@ -618,9 +656,11 @@
       margin-bottom: 10px;
     }
 
+    /* ===== CONTACT ===== */
+
     .contact-box {
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
+      grid-template-columns: 1.02fr 0.98fr;
       gap: 24px;
       padding: 30px;
       border-radius: 28px;
@@ -629,15 +669,24 @@
       box-shadow: var(--shadow);
     }
 
-    .contact-panel {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 22px;
-      padding: 22px;
+    .contact-intro p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin: 0;
+      max-width: 580px;
     }
 
-    .contact-panel div + div {
-      margin-top: 18px;
+    .contact-meta {
+      display: grid;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .contact-meta-item {
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
     }
 
     .contact-label {
@@ -647,8 +696,100 @@
     }
 
     .contact-value {
-      font-size: 1.05rem;
+      font-size: 1.03rem;
       font-weight: 600;
+    }
+
+    .contact-form {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field-full {
+      grid-column: 1 / -1;
+    }
+
+    .field label {
+      font-size: 0.9rem;
+      color: var(--muted-strong);
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      border-radius: 16px;
+      padding: 14px 15px;
+      outline: none;
+      transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: rgba(184, 196, 214, 0.75);
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: rgba(34, 197, 94, 0.6);
+      background: rgba(255,255,255,0.06);
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.10);
+    }
+
+    .field textarea {
+      min-height: 136px;
+      resize: vertical;
+    }
+
+    .form-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+
+    .form-note {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .submit-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 20px;
+      border-radius: 16px;
+      border: 0;
+      background: var(--accent);
+      color: #07111f;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease;
+      box-shadow: 0 10px 30px rgba(34,197,94,0.22);
+    }
+
+    .submit-btn:hover {
+      background: var(--accent-dark);
+      transform: translateY(-1px);
     }
 
     footer {
@@ -677,42 +818,33 @@
       }
 
       .menu {
-        gap: 6px;
+        gap: 2px;
       }
 
       .menu a {
-        padding: 8px 12px;
+        padding: 4px 7px;
       }
     }
 
     @media (max-width: 860px) {
-      .menu-wrap,
-      .nav-right .nav-cta {
+      .menu-wrap {
         display: none;
       }
 
       .menu-toggle {
         display: inline-flex;
       }
-
-      .nav {
-        grid-template-columns: auto 1fr auto;
-      }
     }
 
     @media (max-width: 720px) {
-      :root {
-        --header-h: 56px;
-        --header-h-scrolled: 46px;
-      }
-
       .hero-grid,
       .benefits-wrap,
       .contact-box,
       .services,
       .steps,
       .hero-points,
-      .metric-grid {
+      .metric-grid,
+      .form-grid {
         grid-template-columns: 1fr;
       }
 
@@ -721,11 +853,11 @@
       }
 
       .brand-logo {
-        width: 120px;
+        width: 74px;
       }
 
       .topbar.scrolled .brand-logo {
-        width: 105px;
+        width: 62px;
       }
 
       .hero-brand img {
@@ -753,7 +885,7 @@
             domo_smart_medium_tight.png 600w,
             domo_smart_large_tight.png 1200w
           "
-          sizes="(max-width: 768px) 120px, 170px"
+          sizes="(max-width: 768px) 74px, 104px"
           alt="Domo-Smart Logo"
           class="brand-logo"
         />
@@ -769,8 +901,6 @@
       </div>
 
       <div class="nav-right">
-        <a class="nav-cta nav-cta-primary" href="#kontakt">Beratung anfragen</a>
-
         <button class="menu-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobilePanel">
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M4 7H20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
@@ -787,7 +917,6 @@
         <a href="#vorteile">Vorteile</a>
         <a href="#ablauf">Ablauf</a>
         <a href="#kontakt">Kontakt</a>
-        <a class="mobile-cta" href="#kontakt">Beratung anfragen</a>
       </nav>
     </div>
   </header>
@@ -806,7 +935,7 @@
                 domo_smart_medium_tight.png 600w,
                 domo_smart_large_tight.png 1200w
               "
-              sizes="(max-width: 768px) 220px, 360px"
+              sizes="(max-width: 768px) 220px, 380px"
               alt="Domo-Smart Logo"
             />
           </div>
@@ -845,24 +974,33 @@
               <div class="metric">
                 <div class="metric-label">Beleuchtung</div>
                 <div class="metric-value">12 Szenen</div>
+                <div class="metric-sub">Zeit-, Präsenz- und Stimmungsautomationen</div>
               </div>
               <div class="metric">
                 <div class="metric-label">Energie</div>
                 <div class="metric-value">Live-Überblick</div>
+                <div class="metric-sub">PV, Akku, Verbrauch und Lasten im Blick</div>
               </div>
               <div class="metric">
                 <div class="metric-label">Sicherheit</div>
                 <div class="metric-value">Kameras & Sensoren</div>
+                <div class="metric-sub">Türkontakte, Präsenz, Alarm und Meldungen</div>
               </div>
               <div class="metric">
                 <div class="metric-label">Steuerung</div>
                 <div class="metric-value">Mobil & lokal</div>
+                <div class="metric-sub">App, Tablet, Wandpanel oder Browser</div>
               </div>
             </div>
 
-            <div class="dashboard-note">
-              Maßgeschneiderte Automationen, übersichtliche Visualisierung und eine
-              stabile technische Basis für ein System, das langfristig funktioniert.
+            <div class="dashboard-strip">
+              <div>
+                <div class="dashboard-strip-title">Maßgeschneiderte Automationen</div>
+                <div class="dashboard-strip-text">
+                  Verständliche Dashboards, saubere Integration und eine stabile technische Basis.
+                </div>
+              </div>
+              <div class="dashboard-status">bereit für Live-Betrieb</div>
             </div>
           </div>
         </div>
@@ -959,29 +1097,58 @@
     <section id="kontakt">
       <div class="container">
         <div class="contact-box">
-          <div>
+          <div class="contact-intro">
             <div class="section-kicker">Kontakt</div>
             <h2>Bereit für ein professionelles Smart-Home-Konzept?</h2>
-            <p style="color: var(--muted); font-size: 1.05rem; margin: 0;">
+            <p>
               Nutzen Sie diese Website als starken ersten Eindruck für Ihre neue Firma.
-              Ansprechpartner, Telefonnummer und Einsatzgebiet können wir als Nächstes direkt ergänzen.
+              Ansprechpartner, Telefonnummer und Einsatzgebiet können Sie direkt ergänzen.
             </p>
+
+            <div class="contact-meta">
+              <div class="contact-meta-item">
+                <div class="contact-label">E-Mail</div>
+                <div class="contact-value">info@domo-smart.de</div>
+              </div>
+              <div class="contact-meta-item">
+                <div class="contact-label">Leistung</div>
+                <div class="contact-value">Planung, Integration und Automatisierung</div>
+              </div>
+              <div class="contact-meta-item">
+                <div class="contact-label">Schwerpunkt</div>
+                <div class="contact-value">Home Assistant, lokale Steuerung, saubere Dashboards</div>
+              </div>
+            </div>
           </div>
 
-          <div class="contact-panel">
-            <div>
-              <div class="contact-label">E-Mail</div>
-              <div class="contact-value">info@domo-smart.de</div>
+          <form class="contact-form">
+            <div class="form-grid">
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" placeholder="Ihr Name" />
+              </div>
+
+              <div class="field">
+                <label for="email">E-Mail</label>
+                <input id="email" name="email" type="email" placeholder="ihre@email.de" />
+              </div>
+
+              <div class="field field-full">
+                <label for="subject">Projekt / Anliegen</label>
+                <input id="subject" name="subject" type="text" placeholder="z. B. Smart Home Nachrüstung, Home Assistant, Kameraeinbindung" />
+              </div>
+
+              <div class="field field-full">
+                <label for="message">Nachricht</label>
+                <textarea id="message" name="message" placeholder="Beschreiben Sie kurz Ihr Projekt oder Ihre Wünsche."></textarea>
+              </div>
             </div>
-            <div>
-              <div class="contact-label">Leistung</div>
-              <div class="contact-value">Planung, Integration und Automatisierung</div>
+
+            <div class="form-actions">
+              <div class="form-note">Unverbindliche Erstberatung für private Smart-Home-Projekte.</div>
+              <button type="submit" class="submit-btn">Anfrage senden</button>
             </div>
-            <div>
-              <div class="contact-label">Schwerpunkt</div>
-              <div class="contact-value">Home Assistant, lokale Steuerung, saubere Dashboards</div>
-            </div>
-          </div>
+          </form>
         </div>
       </div>
     </section>
